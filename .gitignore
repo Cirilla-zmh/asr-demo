@@ -1,0 +1,11 @@
+**/.idea
+
+cosyvoice.html
+fun-asr.html
+PROJECT_STRUCTURE.md
+REQUIREMENTS.md
+TESTING.md
+!README.md
+
+venv/
+target/

@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: asr-service
+
+dashscope:
+  api-key: ${DASHSCOPE_API_KEY}
+  asr:
+    model: fun-asr-realtime
+    sample-rate: 16000
+    format: pcm
+  tts:
+    model: cosyvoice-v2
+    voice: longyumi_v2
+    format: mp3
+
+openai:
+  api-key: ${DASHSCOPE_API_KEY}
+  base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+  llm:
+    model: qwen-max
+
+mcp:
+  order-service:
+    command: python3
+    script-path: ${MCP_ORDER_PATH:../order-mcp/server.py}
+
+logging:
+  level:
+    com.example.asr: DEBUG
+
+

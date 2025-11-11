@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>设备端模拟 - ASR Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- 左侧：IM聊天界面 -->
+    <div class="chat-panel">
+      <div class="chat-header">
+        <h2>🎙️ 语音助手</h2>
+        <div class="chat-controls">
+          <button id="connectBtn" class="btn-primary">开始会话</button>
+          <button id="disconnectBtn" class="btn-secondary" disabled>结束会话</button>
+        </div>
+      </div>
+      
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-message">
+          <p>👋 点击"开始会话"开始与语音助手对话</p>
+        </div>
+      </div>
+      
+      <div class="chat-footer">
+        <button id="speakBtn" class="btn-speak" disabled>
+          <span class="btn-icon">🎤</span>
+          <span class="btn-text">开始说话</span>
+        </button>
+        <button id="endSpeakBtn" class="btn-speak-end" disabled>
+          <span class="btn-icon">⏹️</span>
+          <span class="btn-text">结束说话</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- 右侧：配置和日志面板 -->
+    <div class="control-panel">
+      <h3>⚙️ 控制面板</h3>
+      
+      <!-- 配置区域 -->
+      <div class="config-section">
+        <h4>音频配置</h4>
+        <div class="config-item">
+          <label for="volumeThreshold">音量阈值:</label>
+            <input type="range" id="volumeThreshold" min="0" max="100" value="5" />
+            <span class="value"><span id="thresholdValue">5</span>%</span>
+        </div>
+        <div class="config-hint">
+          💡 低于阈值的音频将被过滤，避免环境噪音干扰
+        </div>
+      </div>
+      
+      <!-- 音量显示 -->
+      <div class="volume-meter" id="volumeMeter" style="display: none;">
+        <div class="volume-label">当前音量</div>
+        <div class="volume-bar-container">
+          <div class="volume-bar" id="volumeBar"></div>
+          <div class="volume-threshold" id="volumeThresholdLine"></div>
+        </div>
+        <div class="volume-label" id="volumeStatus">静音</div>
+      </div>
+      
+      <div id="statusContainer"></div>
+      
+      <h4>📋 系统日志</h4>
+      <div id="log" class="log-panel"></div>
+    </div>
+  </div>
+
+  <!-- 隐藏的音频播放器（用于播放TTS音频） -->
+  <audio id="audioPlayer" style="display: none;"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
